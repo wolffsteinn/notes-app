@@ -1,8 +1,13 @@
 import { useState } from "react";
 import "./App.css";
+import NotesList from "./components/NotesList";
 
 function App() {
-  return <h1> hello world </h1>;
+  return (
+    <>
+      <NotesList />
+    </>
+  );
 }
 
 export default App;
