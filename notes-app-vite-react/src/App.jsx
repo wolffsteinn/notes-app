@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { jsx } from "@emotion/react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 import NotesList from "./components/NotesList";
@@ -12,6 +13,24 @@ function App() {
     },
   ]);
   const [searchText, setSearchText] = useState("");
+
+  // to retrieve the notes
+  // note: because JS reads sequentially, you need to put this FIRST
+  // before you have the setItem useEffect
+  // if not you wont get you saved notes upon re-render
+  useEffect(() => {
+    const savedNotes = JSON.parse(localStorage.getItem("vite-notes-app-data"));
+
+    if (savedNotes) {
+      setNotes(savedNotes);
+    }
+  }, []);
+
+  // storing notes into local storage
+  // so that the data doesnt get removed after you refresh
+  useEffect(() => {
+    localStorage.setItem("vite-notes-app-data", JSON.stringify(notes));
+  }, [notes]);
 
   // you addNote function has to be here instead of
   // inside of the AddNote jsx because the state that
