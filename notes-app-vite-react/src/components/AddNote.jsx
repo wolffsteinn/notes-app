@@ -11,7 +11,7 @@ import { styled } from "@mui/material/styles";
 
 // I think i can now?
 // just need to shift the styled components (Emotion) OUT of the component
-const Item = styled("div")(() => ({
+const Item = styled(Paper)(() => ({
   minHeight: "170px",
   padding: "5px",
   backgroundColor: "#86efac",
@@ -56,7 +56,7 @@ const AddNote = ({ handleAddNote }) => {
       setTitle("");
       setText("");
     } else {
-      alert("Cannot save empty note!");
+      alert("Cannot save empty title or note body!");
     }
   };
 

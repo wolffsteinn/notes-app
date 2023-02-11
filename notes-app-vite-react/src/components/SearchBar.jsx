@@ -1,37 +1,37 @@
 import React from "react";
 import { MdSearch } from "react-icons/md";
-import { css } from "@emotion/css";
+import { styled } from "@mui/material/styles";
+
+const Container = styled("div")(() => ({
+  backgroundColor: "#9ca3af",
+  display: "flex",
+  alignItems: "center",
+  marginBottom: "20px",
+  borderRadius: "10px",
+  padding: "5px",
+  height: "32px",
+}));
+
+const TextInput = styled("input")(() => ({
+  width: "500px",
+  backgroundColor: "#9ca3af",
+  border: "none",
+  "&:focus": {
+    outline: "none",
+    border: "none",
+  },
+}));
 
 const SearchBar = ({ handleSearchNote }) => {
   return (
-    <div
-      className={css`
-        background-color: #9ca3af;
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        border-radius: 10px;
-        padding: 5px;
-        height: 32px;
-      `}
-    >
+    <Container>
       <MdSearch size="1.3em" />
-      {/* have to do inline CSS cause emotion doesnt support??  */}
-      <input
-        className={css`
-          width: 500px;
-          background-color: #9ca3af;
-          border: none;
-          &:focus {
-            outline: none;
-            border: none;
-          }
-        `}
+      <TextInput
         onChange={(e) => handleSearchNote(e.target.value)}
         type="text"
         placeholder="Type to search..."
       />
-    </div>
+    </Container>
   );
 };
 
