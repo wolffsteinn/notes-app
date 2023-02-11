@@ -10,6 +10,7 @@ function App() {
       text: "This is a sample note. Type your note and add it to the browser!",
       date: "10/2/2023",
       id: uuidv4(),
+      title: "Sample Note",
     },
   ]);
   const [searchText, setSearchText] = useState("");
@@ -38,13 +39,14 @@ function App() {
   // hence, you would have to pass the function down to the child
   // in order to save the notes.
   // PROP DRILLING
-  const addNote = (text) => {
+  const addNote = (text, title) => {
     const date = new Date();
     const id = uuidv4();
     const newNote = {
       date: date.toLocaleDateString("en-SG"),
       id: id,
       text: text,
+      title: title,
     };
     console.log(id);
     setNotes([...notes, newNote]);

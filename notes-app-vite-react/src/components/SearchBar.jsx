@@ -12,6 +12,7 @@ const SearchBar = ({ handleSearchNote }) => {
         margin-bottom: 20px;
         border-radius: 10px;
         padding: 5px;
+        height: 32px;
       `}
     >
       <MdSearch size="1.3em" />
