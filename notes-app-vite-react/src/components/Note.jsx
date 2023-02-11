@@ -1,24 +1,41 @@
 import React from "react";
 import { MdDeleteForever } from "react-icons/md";
-import { Button, Grid, Paper } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const Note = () => {
+const Note = ({ note, handleDeleteNote }) => {
+  // maybe i can pass the style as a theme context
+  // to addNote.jsx so that no need to rewrite this.
   const Item = styled(Paper)(() => ({
-    backgroundColor: "pink",
+    minHeight: "170px",
+    padding: "5px",
+    backgroundColor: "#fbcfe8",
     textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    whiteSpace: "pre-wrap",
+  }));
+
+  const Footer = styled("div")(() => ({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
   }));
 
   return (
-    <Grid item xs={4}>
+    <Grid item xs={4} id={note.id}>
       <Item>
-        hello
-        <p>This is our first note! Let's go!!</p>
-        <Button>Hello there</Button>
-        <div>
-          <span>09/02/2023</span>
-          <MdDeleteForever />
-        </div>
+        <span>{note.text}</span>
+        <Footer>
+          <span>{note.date}</span>
+          <MdDeleteForever
+            onClick={() => {
+              handleDeleteNote(note.id);
+            }}
+            style={{ cursor: "pointer" }}
+          />
+        </Footer>
       </Item>
     </Grid>
   );
